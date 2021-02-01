@@ -18,6 +18,8 @@ passport.use(
       clientID: keys.FacebookClientID,
       clientSecret: keys.FacebookClientSecret,
       callbackURL: "/auth/facebook/callback",
+      enableProof: true,
+      proxy: true,
     },
     (accessToken, refreshToken, profile, cb) => {
       User.findOne({ facebookId: profile.id }).then((existingUser) => {
